@@ -1,14 +1,14 @@
 import Foundation
 
-public enum PromotionActionType {
+public enum PromotionActionType: Sendable {
     case CHOICE
 }
 
-public struct PromotionActionResult {
+public struct PromotionActionResult: Sendable {
     public let finalCode: String
 }
 
-public class PromotionActionHandler {
+public final class PromotionActionHandler: Sendable {
     private let deviceId: String
     private let promoName: String
     private let promotionId: String
@@ -26,7 +26,7 @@ public class PromotionActionHandler {
         self.code = code
     }
     
-    public func execute(action: PromotionActionType) async throws -> PromotionActionResult {
+    public func executeAction(action: PromotionActionType) async throws -> PromotionActionResult {
         switch action {
         case .CHOICE:
             return try await handleChoiceAction()
