@@ -9,6 +9,27 @@ public struct CodeResult: Sendable {
 }
 
 public class CodesGenerator {
+    public static func GetPromotions() async throws -> [String] {
+        let deviceId = UUID().uuidString.uppercased()
+        let postResponse = try await sendPostRequest(
+            deviceId: deviceId,
+            hash: ApiUtils.resolveHash(deviceId: deviceId),
+            queen: try await ApiUtils.resolveCaptcha()
+        )
+            
+        var promotions = [String]()
+            
+        if let responseArray = postResponse as? [[String: Any]] {
+            for promotion in responseArray {
+                if let code = promotion["code"] as? String {
+                    promotions.append(code)
+                }
+            }
+        }
+            
+        return Array(Set(promotions))
+    }
+    
     public static func GenerateCodes(promotionName: String) async throws -> CodeResult {
         let deviceId = UUID().uuidString.uppercased()
         let hash = ApiUtils.resolveHash(deviceId: deviceId)
