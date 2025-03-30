@@ -5,6 +5,7 @@ public class ApiUtils {
     public static func commonHeaders() -> [String: String] {
         return [
             "Content-Type": "application/json",
+            "Host": "webapi.burgerking.fr",
             "User-Agent": "com.unit9.bkFrApp/10.23.0",
             "x-application": "WEBSITE",
             "x-platform": "APP_IOS",
