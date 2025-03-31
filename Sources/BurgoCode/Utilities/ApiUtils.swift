@@ -8,10 +8,10 @@ public class ApiUtils {
             "Connection": "keep-alive",
             "Content-Type": "application/json",
             "Host": "webapi.burgerking.fr",
-            "User-Agent": "com.unit9.bkFrApp/10.23.0",
+            "User-Agent": "com.unit9.bkFrApp/10.24.0",
             "x-application": "WEBSITE",
             "x-platform": "APP_IOS",
-            "x-version": "10.23.0"
+            "x-version": "10.24.0"
         ]
     }
     
